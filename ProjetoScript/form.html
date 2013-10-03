@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>
+<!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Tech Arts - Form</title>
+	<meta name="description" content="IFPB - Projeto de Linguagem de Script TSI 2013.1">
+		<meta name="author" content="Jonathas Arts e Rômulo Reis">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="css/base.css"/>
+	<link rel="stylesheet" href="css/skeleton.css"/>
+	<link rel="stylesheet" href="css/layout.css"/>
+	<link rel="stylesheet" href="css/jquery-ui.css" />
+	
+    <!--[if lte IE 8]>
+        <script src="js/html5.js"></script>
+    <![endif]-->		
+		
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="https://lh5.googleusercontent.com/-7RVyinhG9yc/Uj8yUdEdwvI/AAAAAAAAANY/GdOzT6-tH2Y/s16-no/favicon.png">
+		<link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/-wbpHIacg99Q/Uj8zRSgao8I/AAAAAAAAANw/0VfJ0SZG0to/s57-no/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="https://lh4.googleusercontent.com/s-LEWku5tyMlW_G3XJM3bUsHZ33EzruU4_GbkXJWWjs=s72-p-no">
+		<link rel="apple-touch-icon" sizes="114x114" href="https://lh3.googleusercontent.com/HNRBiinaq97kOa7Y-E5HytoYYxqw0vMwuVFs-QD-BQQ=s144-p-no">
+	
+	
+	<!-- Validação Form
+	================================================== -->
+	
+	<script>
+
+		// Função para verificar se é numero
+		function IsNum(v){
+		   var ValidChars = "0123456789";
+		   var IsNumber=true;
+		   var Char;
+
+		   for (i = 0; i < v.length && IsNumber == true; i++) 
+		      { 
+		      Char = v.charAt(i); 
+		      if (ValidChars.indexOf(Char) == -1) 
+		         {
+		         IsNumber = false;
+		         }
+		      }
+		   return IsNumber;
+		}
+
+		// Validação do formulário
+		function valida(form) {
+			if (form.nome.value=="") {
+				$(function() {
+				    $("#dialog").hide();$("#button").click(function(){$("#dialog").dialog();});
+				  });//alert("Preencha o nome corretamente.");
+				form.nome.focus();
+				return false;
+			}
+			var filtro_mail = /^.+@.+\..{2,3}$/
+			if (!filtro_mail.test(form.email.value) || form.email.value=="") {
+				alert("Preencha o e-mail corretamente.");
+				form.email.focus();
+				return false;
+			}
+
+			if (form.idade.value=="" || !IsNum(form.idade.value)) {
+				alert("Preencha a idade corretamente.");
+				form.idade.focus();
+				return false;
+			}	
+
+			if (form.tel.value=="") {
+				alert("Preencha o telefone corretamente.");
+				form.tel.focus();
+				return false;
+			}
+
+			if (form.data_nascimento.value=="" || form.data_nascimento.value.length != 10) {
+				alert("Preencha a data de nascimento corretamente.");
+				form.data_nascimento.focus();
+				return false;
+			}
+
+			if (form.senha.value=="" || form.senha.value.length < 6) {
+				alert("Preencha a senha corretamente.");
+				form.senha.focus();
+				return false;
+			}
+
+			if (form.conf_senha.value=="" || form.conf_senha.value.length < 6) {
+				alert("Preencha a confirmação de senha corretamente.");
+				form.conf_senha.focus();
+				return false;
+			}
+
+			if (form.senha.value!=form.conf_senha.value) {
+				alert("A senha e a confirmação tem de ser iguais.");
+				form.conf_senha.focus();
+				return false;
+			}
+
+			if (form.sexo[0].checked==false && form.sexo[1].checked==false) {
+				alert("Selecione o sexo.");
+				return false;
+			}
+		}
+
+
+		// Validação do telefone
+		function telefone(f) {
+			if (f.tel.value.length<9 || f.tel.value.length>10) {
+				alert("Preencha o telefone corretamente.");
+				f.tel.focus();
+			}else{
+				ddd = f.tel.value.substring(0,2);
+				if (f.tel.value.length==9) {
+					part1 = f.tel.value.substring(2,6);
+					part2 = f.tel.value.substring(6,9);
+				}
+				if (f.tel.value.length==10) {
+					part1 = f.tel.value.substring(2,6);
+					part2 = f.tel.value.substring(6,10);
+				}
+				f.tel.value = "("+ddd+") "+part1+"-"+part2
+			}
+		}
+
+		// Função para deixar em caixa alta
+		function mudarTamanho(variavel){
+	        variavel.value = variavel.value.toUpperCase();
+		};
+
+		// Função para verificar a força da senha
+		
+	</script>
+</head>
+<body>
+
+
+	<!-- Página de Carregamento
+	================================================== -->
+	
+	<div id="preloader">
+		<div id="status">&nbsp;</div>
+	</div>	
+
+	<!-- .......... MENU PRINCIPAL .......... -->
+		<nav id="navigation">
+			<a href="index.html">
+				<img class="logo" alt='logo' src='images/logo.png'>
+			</a>
+	        <ul   id="menu">
+	            <li>
+	                <a href="index.html">Voltar para a Home</a>
+	            </li>
+	        </ul>
+		</nav>
+	<!-- .......... END MENU PRINCIPAL .......... -->
+
+	<!-- .......... PAGINA DE CADASTRO .......... -->
+	<div id="singleproject">
+		<div class="container">
+			<div class="singleproject1-body">	
+				<div class="sixteen columns">
+					<h4>POR QUE SE CADASTRAR?</h4>
+					<p>Cadastrando-se em nosso sistema você receberá informações sobre novas tecnologias desenvolvidas, promoções e novos serviços.</p>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="singleproject-top">		
+		<div class="container">
+			
+			<div>
+				<h3>Formulário de Cadastro</h3>	
+				<form id="form_cadastro" onsubmit="return valida(this);">
+					<label for="">Nome:</label>
+					<input type="text" name="nome" onblur="mudarTamanho(this)"><br>
+
+					<label for="">E-mail:</label>
+					<input type="text" name="email" onblur="mudarTamanho(this)"><br>
+
+					<label for="">Idade:</label>
+					<input type="text" name="idade" maxlength="2" size="2" onblur="mudarTamanho(this)"><br>
+
+					<label for="">CEP:</label>
+					<input type="text" name="CEP" id="cep"><br>
+
+					<label for="">Endereço:</label>
+					<textarea name="endereco" id="result" cols="30" rows="10" onblur="mudarTamanho(this)"></textarea><br>
+
+					<label for="">Telefone:</label>
+					<input type="text" name="tel" onblur="telefone(this.form);" maxlength="10"> <small class="descricao">(Formato: DDD+TELEFONE: 8300000000)</small><br><br>
+
+					<label for="">Data de Nascimento:</label>
+					<input class="descricao" type="text" name="data_nascimento" value="dd/mm/aaaa" maxlength="10" onfocus="if (this.value=='dd/mm/aaaa'){this.value='';}" onblur="if (this.value==''){this.value='dd/mm/aaaa';}"><br><br>
+
+					<label for="">Senha:</label>
+					<input type="password" name="senha" class="password"> <small class="descricao">(Mínimo: 6 caracteres)</small><br><br>
+
+					<label for="">Confirmação de Senha:</label>
+					<input type="password" name="conf_senha"><br><br>
+
+					<label for="">Sexo:</label>
+					<input class="menos" type="radio" name="sexo" value="masc"> Masculino  <input class="menos"  type="radio" name="sexo" value="fem"> Feminino<br><br>
+
+					<input id="button" type="submit" value="Enviar">
+				</form>
+			</div>
+			<script>
+					var xmlhttp;
+					var data;
+					document.querySelector("#cep").onblur = function(){
+						var cep = document.querySelector("#cep").value;
+						var url = "http://cep.republicavirtual.com.br/web_cep.php?cep="+cep+"&formato=json";
+						createXHR();
+
+						xmlhttp.open("GET",url,true);
+						xmlhttp.onreadystatechange=function(){
+							if (xmlhttp.readyState==4 && xmlhttp.status==200){
+								data=JSON.parse(xmlhttp.responseText);
+								console.log(data);
+								var showAddress = "Rua "+data.logradouro;
+								document.querySelector("#result").value = showAddress;
+							}
+						}
+						xmlhttp.send();
+				}
+
+				function createXHR(){
+					if (window.XMLHttpRequest)
+					  {// code for IE7+, Firefox, Chrome, Opera, Safari
+					  xmlhttp=new XMLHttpRequest();
+					  }
+					else
+					  {// code for IE6, IE5
+					  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					  }
+				}
+			</script>
+		</div>	
+	</div>
+	<!-- RODAPÉ
+		================================================== -->
+		<div id="copy">
+			<div class="container">
+				<section class="cbp-so-section">
+					<div class="sixteen columns cbp-so-side cbp-so-side-left">
+						<p>© 2013 Tech Arts. Todos os direitos reservados. <span>Desenvolvido por Jonathas Art's e Rômulo Reis</span></p>
+					</div>
+					<div class="sixteen columns cbp-so-side cbp-so-side-right">
+						<div class="cl-effect-18">
+							<!-- jonathas -->
+							<a href="https://www.facebook.com/j.breks?ref=tn_tnmn" data-hover="facebook">Facebook</a>
+							<a href="https://plus.google.com/u/0/115164843146137606900/posts" data-hover="Google+">Google+</a>
+							<a href="http://lattes.cnpq.br/7706905988027284" data-hover="Lattes">Lattes</a>
+							<a href="https://github.com/JonathasArts" data-hover="GitHub">GitHub</a>
+							<a href=""></a>
+							<!-- romulo -->
+							<a href="https://www.facebook.com/romulo.reis.984" data-hover="facebook">Facebook</a>
+							<a href="#" data-hover="Google+">Google+</a>
+							<a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4677143T7" data-hover="Lattes">Lattes</a>
+							<a href="https://github.com/JonathasArts" data-hover="GitHub">GitHub</a>
+						</div>
+					</div>
+				</section>	
+			</div>	
+		</div>		
+		<!-- ======================= END RODAPÉ =========================== -->
+	<!-- .......... END PAGINA DE CADASTRO .......... -->
+		
+
+	<!-- JAVASCRIPT
+    ================================================== -->
+  
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/modernizr.custom.js"></script>
+<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="js/singleproject1.js"></script>
+<script type="text/javascript" src="js/jquery.complexify.js"></script>
+
+<!-- End Document
+================================================== -->
+</body>
+</html>	

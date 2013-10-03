@@ -1,0 +1,4 @@
+﻿FUNCIONALIDADE: Explicação do que é o site e suas principais funcionalidades;
+
+Trata-se de um site para uma empresa ficticia criada por nós na área de TI, tenho como principal função apresentar o conteudo visto em sala de aula.
+Nele colocamos nosso curriculo pessoal e alguns trabalhos já realizados, como tambem dados de contato.

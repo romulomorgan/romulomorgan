@@ -1,0 +1,4 @@
+﻿INTEGRANTES: Nome, matrícula e período da disciplina.
+
+Jonathas Arestides de Almeida 	- 20122370052 - 2ºPeríodo
+Rômulo Morgan De Moraes Reis	- 20122370400 - 2ºPeríodo

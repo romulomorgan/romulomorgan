@@ -1,0 +1,10 @@
+﻿ESTRUTURA: Descrição da estrutura do site através dos principais diretórios e arquivos utilizados;
+
+Pasta           |    conteúdo																|
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+css		|    arquivos de estilo (.css) e pasta font com arquivos woff										|
+descrição	|    arquivos solicitados para o projeto(estrutura.txt,funcionalidade.txt,integrante.txt)						|
+images          |    imagens utilizadas no site														|
+js              |    arquivos de javascript (.js)													|
+raiz            |    paginas do site (index.html- com todo o conteúdo; form.html- com formulário para cumprimento de requisitos)			|
+---------------------------------------------------------------------------------------------------------------------------------------------------------
